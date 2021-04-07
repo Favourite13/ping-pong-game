@@ -71,7 +71,7 @@ public class Game extends Canvas implements Runnable {
 	ballX = WIDTH / 2;
 	ballY = HEIGHT / 2;
 	ballSize = 20;
-	ballSpeed = 5;
+	ballSpeed = 3;
 	ballColor = Color.RED;
 	ball = new Ball(ballX, ballY, ballSize, ballSpeed, ID.BALL, ballColor);
     }

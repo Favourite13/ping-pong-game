@@ -46,8 +46,11 @@ public class Handler {
 
     private void checkCollisions(GameObject el) {
 	// walls Y
-	if (ball.getY() <= 0 || ball.getY() >= (Game.HEIGHT - 3 * ball.getSize())) {
-	    ball.invY();
+	if (ball.getY() <= 0) {
+	    ball.setYPos();
+	}
+	if (ball.getY() >= (Game.HEIGHT - 3 * ball.getSize())) {
+	    ball.setYNeg();
 	}
 	// bricks
 	if (ball.getSpeedX() > 0) {
@@ -56,28 +59,22 @@ public class Handler {
 		    && el.getY() < ball.getY() + ball.getSize() && el.getY() + ((Brick) el).getSizeY() > ball.getY()) {
 		ball.invX();
 	    } else {
-		if (el.id.equals(ID.RIGHT) &&
-			el.getX() <= ball.getX() + ball.getSize() &&
-			(el.getY() > ball.getY() + ball.getSize() ||
-			el.getY() + ((Brick) el).getSizeY() < ball.getY())) {
-		    System.out.println("hereR");
+		if (el.id.equals(ID.RIGHT) && el.getX() <= ball.getX() + ball.getSize()
+			&& (el.getY() > ball.getY() + ball.getSize()
+				|| el.getY() + ((Brick) el).getSizeY() < ball.getY())) {
 		    g.stop();
 		}
 	    }
 	} else {
 	    // else left
-	    if (el.id.equals(ID.LEFT) &&
-		    el.getX() + ((Brick) el).getSizeX() >= ball.getX() &&
-		    el.getY() < ball.getY() + ball.getSize() &&
-		    el.getY() + ((Brick) el).getSizeY() > ball.getY()) {
+	    if (el.id.equals(ID.LEFT) && el.getX() + ((Brick) el).getSizeX() >= ball.getX()
+		    && el.getY() < ball.getY() + ball.getSize() && el.getY() + ((Brick) el).getSizeY() > ball.getY()) {
 		ball.invX();
 	    } else {
-		if (el.id.equals(ID.LEFT) &&
-			    el.getX() + ((Brick) el).getSizeX() >= ball.getX() &&
-			    (el.getY() > ball.getY() + ball.getSize() ||
-			    el.getY() + ((Brick) el).getSizeY() < ball.getY())) {
+		if (el.id.equals(ID.LEFT) && el.getX() + ((Brick) el).getSizeX() >= ball.getX()
+			&& (el.getY() > ball.getY() + ball.getSize()
+				|| el.getY() + ((Brick) el).getSizeY() < ball.getY())) {
 		    g.stop();
-		    System.out.println("hereL");
 		}
 	    }
 	}

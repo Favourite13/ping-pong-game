@@ -13,7 +13,7 @@ public class Ball extends GameObject {
 	super(x, y, id, color);
 	this.size = size;
 	this.speedX = -speed;
-	this.speedY = /*-speed*/0;
+	this.speedY = speed;
     }
 
     public void move() {
@@ -33,8 +33,20 @@ public class Ball extends GameObject {
 	return this.speedX;
     }
 
+    public int getSpeedY() {
+	return this.speedY;
+    }
+
     public int getSize() {
 	return this.size;
+    }
+
+    public void setYPos() {
+	this.speedY = this.speedY < 0 ? -this.speedY : this.speedY;
+    }
+
+    public void setYNeg() {
+	this.speedY = this.speedY > 0 ? -this.speedY : this.speedY;
     }
 
     @Override
